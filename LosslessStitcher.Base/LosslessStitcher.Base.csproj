@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>LosslessStitcher</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HashCodeUtility\HashCodeUtility.csproj" />
+    <ProjectReference Include="..\LosslessStitcher.DependencyRoot\LosslessStitcher.DependencyRoot.csproj" />
+  </ItemGroup>
+
+</Project>
