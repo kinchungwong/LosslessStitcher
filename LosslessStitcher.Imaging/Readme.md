@@ -1,3 +1,3 @@
 ﻿### LosslessStitcher.Imaging
 
-License type: to be determined
+License type: MIT

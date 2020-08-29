@@ -2,7 +2,7 @@
 
 namespace LosslessStitcher.Imaging
 {
-    public interface IScalarBitmapInfo
+    public interface IBitmapInfo
     {
         int Width { get; }
         int Height { get; }

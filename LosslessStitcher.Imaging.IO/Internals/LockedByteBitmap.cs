@@ -21,7 +21,7 @@ namespace LosslessStitcher.Imaging.IO.Internals
 
         public bool CanWrite { get; }
 
-        public bool ShouldDispose { get; set; }
+        public bool ShouldDisposeBitmap { get; set; }
 
         private ImageLockMode LockFlags { get; }
 
@@ -29,7 +29,7 @@ namespace LosslessStitcher.Imaging.IO.Internals
 
         public int Height { get; }
 
-        Data.Size IScalarBitmapInfo.Size => new Data.Size(Width, Height);
+        Data.Size IBitmapInfo.Size => new Data.Size(Width, Height);
 
         public int BytesPerPixel { get; }
 
@@ -39,7 +39,7 @@ namespace LosslessStitcher.Imaging.IO.Internals
 
         private int Stride;
 
-        public LockedByteBitmap(Bitmap bitmap, bool canRead, bool canWrite, bool shouldDispose)
+        public LockedByteBitmap(Bitmap bitmap, bool canRead, bool canWrite, bool shouldDisposeBitmap)
         {
             Bitmap = bitmap;
             PixelFormat = bitmap.PixelFormat;
@@ -47,7 +47,7 @@ namespace LosslessStitcher.Imaging.IO.Internals
             Height = bitmap.Height;
             CanRead = canRead;
             CanWrite = canWrite;
-            ShouldDispose = shouldDispose;
+            ShouldDisposeBitmap = shouldDisposeBitmap;
             LockFlags = _GetFlags(canRead, canWrite);
             BytesPerPixel = _GetBytesPerPixel(PixelFormat);
             ArrayElementsPerRow = Width * BytesPerPixel;
@@ -66,7 +66,7 @@ namespace LosslessStitcher.Imaging.IO.Internals
                 {
                     Bitmap.UnlockBits(BitmapData);
                 }
-                if (ShouldDispose &&
+                if (ShouldDisposeBitmap &&
                     !(Bitmap is null))
                 {
                     Bitmap.Dispose();

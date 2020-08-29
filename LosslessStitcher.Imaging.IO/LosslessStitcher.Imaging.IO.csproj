@@ -42,8 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitmapIoConvertUtility.cs" />
-    <Compile Include="BitmapIoCopyUtility.cs" />
+    <Compile Include="BitmapCodecIdentifier.cs" />
+    <Compile Include="BitmapCodecManager.cs" />
+    <Compile Include="BitmapCodecUtility.cs" />
+    <Compile Include="BitmapDecoder.cs" />
+    <Compile Include="BitmapEncoder.cs" />
+    <Compile Include="BitmapInfo.cs" />
+    <Compile Include="ConvertToMethods.cs" />
+    <Compile Include="CopyToMethods.cs" />
+    <Compile Include="Internals\BitmapIoWrapper.cs" />
     <Compile Include="Internals\Bgr8888Wrapper.cs" />
     <Compile Include="Internals\Bgr888Wrapper.cs" />
     <Compile Include="Internals\ByteRowBufferPool.cs" />
