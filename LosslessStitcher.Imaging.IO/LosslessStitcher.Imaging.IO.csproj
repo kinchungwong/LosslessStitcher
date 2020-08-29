@@ -64,5 +64,8 @@
       <Name>LosslessStitcher.Imaging</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Readme.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
