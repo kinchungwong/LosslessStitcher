@@ -31,6 +31,7 @@ namespace LosslessStitcher.Imaging
 
         private IntBitmap(BitmapFactory factory)
         {
+            _CtorValidateFactory(factory);
             Factory = factory;
         }
 
@@ -138,6 +139,14 @@ namespace LosslessStitcher.Imaging
             if (rowDataEnd > rowDataLength)
             {
                 throw new IndexOutOfRangeException();
+            }
+        }
+
+        private static void _CtorValidateFactory(BitmapFactory factory)
+        {
+            if (factory is null)
+            {
+                throw new ArgumentNullException(nameof(factory));
             }
         }
     }

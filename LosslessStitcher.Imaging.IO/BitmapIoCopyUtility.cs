@@ -106,52 +106,9 @@ namespace LosslessStitcher.Imaging.IO
             }
         }
 
-        private static void _CopyRows(IBitmapRowSource<int> source, IBitmapRowDirect<int> dest)
+        private static void _CopyRows(IBitmapRowSource<int> source, IBitmapRowAccess<int> dest)
         {
-            #region validation
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-            if (dest is null)
-            {
-                throw new ArgumentNullException(nameof(dest));
-            }
-            if (source.Width != dest.Width ||
-                source.Height != dest.Height)
-            {
-                throw new ArgumentException(message: "Bitmap size mismatch");
-            }
-            #endregion
-            for (int row = 0; row < source.Height; ++row)
-            {
-                var destSegment = dest.GetRowDirect(row);
-                source.CopyRow(row, destSegment.Array, destSegment.Offset);
-            }
-        }
-
-        private static void _CopyRows(IBitmapRowDirect<int> source, IBitmapRowAccess<int> dest)
-        {
-            #region validation
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-            if (dest is null)
-            {
-                throw new ArgumentNullException(nameof(dest));
-            }
-            if (source.Width != dest.Width ||
-                source.Height != dest.Height)
-            {
-                throw new ArgumentException(message: "Bitmap size mismatch");
-            }
-            #endregion
-            for (int row = 0; row < source.Height; ++row)
-            {
-                var sourceSegment = source.GetRowDirect(row);
-                dest.WriteRow(row, sourceSegment.Array, sourceSegment.Offset);
-            }
+            new BitmapCopyWorker<int>(source, dest).Invoke();
         }
     }
 }
