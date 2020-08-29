@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace LosslessStitcher.Imaging
+namespace LosslessStitcher.Imaging.IO
 {
     public interface IBitmapEncoder
     {

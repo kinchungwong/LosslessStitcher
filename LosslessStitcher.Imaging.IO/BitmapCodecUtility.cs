@@ -8,17 +8,27 @@ namespace LosslessStitcher.Imaging.IO
     {
         public static IntBitmap LoadAsIntBitmap(string filename)
         {
+            return LoadAsIntBitmap(filename, new BitmapFactory());
+        }
+
+        public static IntBitmap LoadAsIntBitmap(string filename, BitmapFactory bitmapFactory)
+        {
             using (var input = new Bitmap(filename))
             {
-                return input.ToIntBitmap();
+                return input.ToIntBitmap(bitmapFactory);
             }
         }
 
         public static IntBitmap LoadAsIntBitmap(Stream strm)
         {
+            return LoadAsIntBitmap(strm, new BitmapFactory());
+        }
+
+        public static IntBitmap LoadAsIntBitmap(Stream strm, BitmapFactory bitmapFactory)
+        {
             using (var input = new Bitmap(strm))
             {
-                return input.ToIntBitmap();
+                return input.ToIntBitmap(bitmapFactory);
             }
         }
 
