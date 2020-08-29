@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>LosslessStitcher.Imaging</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LosslessStitcher.Base\LosslessStitcher.Base.csproj" />
-    <ProjectReference Include="..\LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj" />
   </ItemGroup>
 
 </Project>

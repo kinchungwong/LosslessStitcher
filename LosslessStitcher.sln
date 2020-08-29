@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashCodeUtility", "HashCode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitwiseUtility", "BitwiseUtility\BitwiseUtility.csproj", "{5CC61B81-3A98-4986-AE11-1BF4947C484D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging", "LosslessStitcher.Imaging\LosslessStitcher.Imaging.csproj", "{C491E653-1EA8-4489-A436-1FF451DB1802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging", "LosslessStitcher.Imaging\LosslessStitcher.Imaging.csproj", "{C491E653-1EA8-4489-A436-1FF451DB1802}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Abstract", "LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj", "{40D4798A-1B4B-4A10-AC56-386115BBD003}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C491E653-1EA8-4489-A436-1FF451DB1802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C491E653-1EA8-4489-A436-1FF451DB1802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C491E653-1EA8-4489-A436-1FF451DB1802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
