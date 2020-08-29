@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.DependencyRoot", "LosslessStitcher.DependencyRoot\LosslessStitcher.DependencyRoot.csproj", "{CBC024CE-7C2B-41FA-8DF8-764A7C0123DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.DependencyRoot", "LosslessStitcher.DependencyRoot\LosslessStitcher.DependencyRoot.csproj", "{CBC024CE-7C2B-41FA-8DF8-764A7C0123DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Base", "LosslessStitcher.Base\LosslessStitcher.Base.csproj", "{515793CA-3E0A-4A12-9324-F97973F12C6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Base", "LosslessStitcher.Base\LosslessStitcher.Base.csproj", "{515793CA-3E0A-4A12-9324-F97973F12C6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCodeUtility", "HashCodeUtility\HashCodeUtility.csproj", "{16DB027F-81F3-4BF4-A9FF-74E356D49F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashCodeUtility", "HashCodeUtility\HashCodeUtility.csproj", "{16DB027F-81F3-4BF4-A9FF-74E356D49F6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitwiseUtility", "BitwiseUtility\BitwiseUtility.csproj", "{5CC61B81-3A98-4986-AE11-1BF4947C484D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitwiseUtility", "BitwiseUtility\BitwiseUtility.csproj", "{5CC61B81-3A98-4986-AE11-1BF4947C484D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging", "LosslessStitcher.Imaging\LosslessStitcher.Imaging.csproj", "{C491E653-1EA8-4489-A436-1FF451DB1802}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5CC61B81-3A98-4986-AE11-1BF4947C484D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CC61B81-3A98-4986-AE11-1BF4947C484D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CC61B81-3A98-4986-AE11-1BF4947C484D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C491E653-1EA8-4489-A436-1FF451DB1802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C491E653-1EA8-4489-A436-1FF451DB1802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C491E653-1EA8-4489-A436-1FF451DB1802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C491E653-1EA8-4489-A436-1FF451DB1802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
