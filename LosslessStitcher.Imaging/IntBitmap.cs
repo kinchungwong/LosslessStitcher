@@ -5,6 +5,7 @@ namespace LosslessStitcher.Imaging
 {
     public class IntBitmap
         : IArrayBitmap<int>
+        , IBitmapRowDirect<int>
     {
         public BitmapFactory Factory { get; }
 
@@ -47,6 +48,33 @@ namespace LosslessStitcher.Imaging
         {
         }
 
+        public void CopyRow(int row, int[] dest, int destStart)
+        {
+            _ValidateY(row);
+            _ValidateRowBuffer(dest, destStart);
+            int[] source = Data;
+            int sourceStart = row * Width;
+            Array.Copy(source, sourceStart, dest, destStart, Width);
+        }
+
+        public void WriteRow(int row, int[] source, int sourceStart)
+        {
+            _ValidateY(row);
+            _ValidateRowBuffer(source, sourceStart);
+            int[] dest = Data;
+            int destStart = row * Width;
+            Array.Copy(source, sourceStart, dest, destStart, Width);
+        }
+
+        public ArraySegment<int> GetRowDirect(int row) 
+        {
+            _ValidateY(row);
+            int[] data = Data;
+            int start = row * Width;
+            int count = Width;
+            return new ArraySegment<int>(data, start, count);
+        }
+
         public void Dispose()
         {
             var data = Data;
@@ -75,6 +103,14 @@ namespace LosslessStitcher.Imaging
             }
         }
 
+        private void _ValidateY(int y)
+        {
+            if (y < 0 || y >= Height)
+            {
+                throw new ArgumentOutOfRangeException(nameof(y));
+            }
+        }
+
         private static void _CtorValidateWH(int width, int height)
         {
             if (width <= 0)
@@ -84,6 +120,24 @@ namespace LosslessStitcher.Imaging
             if (height <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(height));
+            }
+        }
+
+        private void _ValidateRowBuffer(int[] rowData, int rowDataStart)
+        {
+            if (rowData is null)
+            {
+                throw new ArgumentNullException(nameof(rowData));
+            }
+            if (rowDataStart < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(rowDataStart));
+            }
+            int rowDataEnd = checked(rowDataStart + Width);
+            int rowDataLength = rowData.Length;
+            if (rowDataEnd > rowDataLength)
+            {
+                throw new IndexOutOfRangeException();
             }
         }
     }

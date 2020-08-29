@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Abstract", "LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj", "{40D4798A-1B4B-4A10-AC56-386115BBD003}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO", "LosslessStitcher.Imaging.IO\LosslessStitcher.Imaging.IO.csproj", "{287B7D00-613D-46DD-B003-37B612B4230E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40D4798A-1B4B-4A10-AC56-386115BBD003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{287B7D00-613D-46DD-B003-37B612B4230E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{287B7D00-613D-46DD-B003-37B612B4230E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{287B7D00-613D-46DD-B003-37B612B4230E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{287B7D00-613D-46DD-B003-37B612B4230E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
