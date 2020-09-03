@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>743c756f-63e0-4f88-9241-1f365fda018b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LosslessStitcher.Imaging.IO.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapCodecIdentifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapCodecManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapCodecUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapDecoder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapEncoder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertToMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CopyToMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\Bgr8888Wrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\Bgr888Wrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\BitmapIoWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ByteRowBufferPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\LockedByteBitmap.cs" />
+  </ItemGroup>
+</Project>

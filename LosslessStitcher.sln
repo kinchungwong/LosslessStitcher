@@ -13,11 +13,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitwiseUtility", "BitwiseUt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging", "LosslessStitcher.Imaging\LosslessStitcher.Imaging.csproj", "{C491E653-1EA8-4489-A436-1FF451DB1802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Abstract", "LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj", "{40D4798A-1B4B-4A10-AC56-386115BBD003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Abstract", "LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj", "{40D4798A-1B4B-4A10-AC56-386115BBD003}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO", "LosslessStitcher.Imaging.IO\LosslessStitcher.Imaging.IO.csproj", "{287B7D00-613D-46DD-B003-37B612B4230E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO.Tests", "LosslessStitcher.Imaging.IO.Tests\LosslessStitcher.Imaging.IO.Tests.csproj", "{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO.DotNetCore", "LosslessStitcher.Imaging.IO.DotNetCore\LosslessStitcher.Imaging.IO.DotNetCore.csproj", "{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LosslessStitcher.Imaging.IO.Shared", "LosslessStitcher.Imaging.IO.Shared\LosslessStitcher.Imaging.IO.Shared.shproj", "{743C756F-63E0-4F88-9241-1F365FDA018B}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LosslessStitcher.Imaging.IO.Shared\LosslessStitcher.Imaging.IO.Shared.projitems*{287b7d00-613d-46dd-b003-37b612b4230e}*SharedItemsImports = 4
+		LosslessStitcher.Imaging.IO.Shared\LosslessStitcher.Imaging.IO.Shared.projitems*{743c756f-63e0-4f88-9241-1f365fda018b}*SharedItemsImports = 13
+		LosslessStitcher.Imaging.IO.Shared\LosslessStitcher.Imaging.IO.Shared.projitems*{dac34dba-ae8a-4c79-a169-3f13a57b948d}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -51,6 +62,14 @@ Global
 		{287B7D00-613D-46DD-B003-37B612B4230E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{287B7D00-613D-46DD-B003-37B612B4230E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{287B7D00-613D-46DD-B003-37B612B4230E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
