@@ -6,25 +6,12 @@ using NUnit.Framework;
 
 namespace LosslessStitcher.Imaging.Hash2D.Tests
 {
-    using HashCodeUtility;
-    using LosslessStitcher.Data;
-    using LosslessStitcher.Functional;
-    using LosslessStitcher.Imaging.Hash2D.Simple;
     using LosslessStitcher.Imaging.IO;
 
     public class SimpleProcessor_SmokeTest
     {
-        public IContainer Container;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterInstance(new BitmapFactory()).As<IBitmapFactory>();
-            builder.RegisterType<SimpleHash2DProcessor>().As<IHash2DProcessor>();
-            builder.RegisterType<BitmapCodecManager>().As<IBitmapCodecManager>();
-            Container = builder.Build();
-        }
+        public TestContainer TestContainer = new TestContainer();
+        public IContainer Container => TestContainer.Container;
 
         [Test]
         [TestCase(typeof(TestBitmap_Blank))]
@@ -46,76 +33,9 @@ namespace LosslessStitcher.Imaging.Hash2D.Tests
             proc.Process(input, output);
             string ofn1 = testBitmapType.Name;
             string ofn2 = Path.GetRandomFileName();
-            string ofn3 = $"{ofn1}_{ofn2}.png";
+            string ofn3 = $"{nameof(SimpleProcessor_SmokeTest)}_{nameof(SmokeTest)}_{ofn1}_{ofn2}.png";
             string outputFilename = Path.Combine(Path.GetTempPath(), ofn3);
             _SaveBitmap(output, outputFilename);
-        }
-
-        public abstract class TestBitmapFunc
-            : IFunc<int, int, int>
-        {
-            public abstract int Invoke(int x, int y);
-
-            public virtual IArrayBitmap<int> Generate(IBitmapFactory bitmapFactory, int width, int height)
-            {
-                IArrayBitmap<int> bitmap = bitmapFactory.Create<int>(width, height);
-                for (int y = 0; y < height; ++y)
-                {
-                    for (int x = 0; x < width; ++x)
-                    {
-                        bitmap[x, y] = Invoke(x, y);
-                    }
-                }
-                return bitmap;
-            }
-        }
-
-        public class TestBitmap_Blank : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return 0;
-            }
-        }
-
-        public class TestBitmap_TakeX : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return x;
-            }
-        }
-
-        public class TestBitmap_TakeY : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return y;
-            }
-        }
-
-        public class TestBitmap_SumXY : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return x + y;
-            }
-        }
-
-        public class TestBitmap_ProdXY : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return x * y;
-            }
-        }
-
-        public class TestBitmap_HashXY : TestBitmapFunc
-        {
-            public override sealed int Invoke(int x, int y)
-            {
-                return new HashCodeBuilder(0u).Ingest(x, y).GetHashCode();
-            }
         }
 
         private void _SaveBitmap(IArrayBitmap<int> bitmap, string outputFilename)
