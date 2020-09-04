@@ -4,6 +4,7 @@ using System;
 namespace LosslessStitcher.Imaging
 {
     public class BitmapFactory
+        : IBitmapFactory
     {
         public BitmapArrayPool<int> IntArrayPool { get; set; } = new BitmapArrayPool<int>();
 

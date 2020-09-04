@@ -3,7 +3,7 @@
 namespace LosslessStitcher.Imaging
 {
     public interface IArrayBitmap<T>
-        : IBitmapInfo
+        : IBitmapRowDirect<T>
         where T : struct
     {
         T[] Data { get; }

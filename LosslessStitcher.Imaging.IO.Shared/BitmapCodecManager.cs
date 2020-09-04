@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 
 namespace LosslessStitcher.Imaging.IO
 {
-    public class BitmapCodecManager 
+    public class BitmapCodecManager
         : IBitmapCodecManager
     {
+        public IEnumerable<IBitmapCodecIdentifier> Codecs
+        {
+            get;
+        } = (new List<IBitmapCodecIdentifier>() { BitmapCodecIdentifier.Default }).AsReadOnly();
+
         public IBitmapCodecIdentifier Identify(Stream stream)
         {
             return BitmapCodecIdentifier.Default;

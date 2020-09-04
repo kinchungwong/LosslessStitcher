@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HashCodeUtility\HashCodeUtility.csproj" />
+    <ProjectReference Include="..\LosslessStitcher.Imaging.Abstract\LosslessStitcher.Imaging.Abstract.csproj" />
+    <ProjectReference Include="..\LosslessStitcher.Imaging.Hash2D.Abstract\LosslessStitcher.Imaging.Hash2D.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

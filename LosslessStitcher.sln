@@ -17,11 +17,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Ab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO", "LosslessStitcher.Imaging.IO\LosslessStitcher.Imaging.IO.csproj", "{287B7D00-613D-46DD-B003-37B612B4230E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO.Tests", "LosslessStitcher.Imaging.IO.Tests\LosslessStitcher.Imaging.IO.Tests.csproj", "{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.IO.Tests", "LosslessStitcher.Imaging.IO.Tests\LosslessStitcher.Imaging.IO.Tests.csproj", "{D926C7AD-DAB1-4064-9BC9-8734FEAB6DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.IO.DotNetCore", "LosslessStitcher.Imaging.IO.DotNetCore\LosslessStitcher.Imaging.IO.DotNetCore.csproj", "{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.IO.DotNetCore", "LosslessStitcher.Imaging.IO.DotNetCore\LosslessStitcher.Imaging.IO.DotNetCore.csproj", "{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LosslessStitcher.Imaging.IO.Shared", "LosslessStitcher.Imaging.IO.Shared\LosslessStitcher.Imaging.IO.Shared.shproj", "{743C756F-63E0-4F88-9241-1F365FDA018B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Hash2D", "LosslessStitcher.Imaging.Hash2D\LosslessStitcher.Imaging.Hash2D.csproj", "{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Tests", "LosslessStitcher.Imaging.Hash2D.Tests\LosslessStitcher.Imaging.Hash2D.Tests.csproj", "{011E43BC-3F78-448D-B927-6B5B633FCD55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Simple", "LosslessStitcher.Imaging.Hash2D.Simple\LosslessStitcher.Imaging.Hash2D.Simple.csproj", "{B9912376-4B7A-41E8-AF09-8293EE1660A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Functional", "LosslessStitcher.Functional\LosslessStitcher.Functional.csproj", "{F12F7FE7-4246-41D1-B890-780A897B13C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Abstract", "LosslessStitcher.Imaging.Hash2D.Abstract\LosslessStitcher.Imaging.Hash2D.Abstract.csproj", "{C520E458-D940-4F57-9525-52E71A77FDD6}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -70,6 +80,26 @@ Global
 		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAC34DBA-AE8A-4C79-A169-3F13A57B948D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011E43BC-3F78-448D-B927-6B5B633FCD55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011E43BC-3F78-448D-B927-6B5B633FCD55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011E43BC-3F78-448D-B927-6B5B633FCD55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011E43BC-3F78-448D-B927-6B5B633FCD55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9912376-4B7A-41E8-AF09-8293EE1660A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9912376-4B7A-41E8-AF09-8293EE1660A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9912376-4B7A-41E8-AF09-8293EE1660A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9912376-4B7A-41E8-AF09-8293EE1660A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12F7FE7-4246-41D1-B890-780A897B13C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12F7FE7-4246-41D1-B890-780A897B13C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12F7FE7-4246-41D1-B890-780A897B13C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12F7FE7-4246-41D1-B890-780A897B13C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C520E458-D940-4F57-9525-52E71A77FDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C520E458-D940-4F57-9525-52E71A77FDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C520E458-D940-4F57-9525-52E71A77FDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C520E458-D940-4F57-9525-52E71A77FDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
