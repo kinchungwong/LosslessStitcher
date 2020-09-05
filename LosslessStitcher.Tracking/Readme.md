@@ -44,13 +44,5 @@ The tracking algorithms are divided into two types:
 
 ##### The three-image tracking ("T3") algorithm
 
-- The "T3" algorithm operates on three input images at a time. This algorithm finds overlapping content
-  that occurs on all three images, and computes a "trajectory" for each group of content. 
-- A trajectory refers to the movement vector between all three input images. If we denote the three images
-  as ```Image_0```, ```Image_1```, and ```Image_2```, the trajectory can be described as consisting of 
-  ```Movement(Image_0, Image_1)``` and ```Movement(Image_1, Image_2)```. (The movement between ```Image_0``` 
-  and ```Image_2``` is easily calculated from the two, and therefore redundant.)
-- The main drawback of "T3" algorithm is that, when the image content is scrolled too quickly, there may 
-  be no overlapping image content that appears across three consecutive screenshots. For this reason, 
-  the "T2" and "T3" algorithms are never used alone; they are always used in conjunction, in order to cover
-  the corner cases that cannot be handled by either.
+Main article: [Readme_T3.md](Readme_T3.md)
+
