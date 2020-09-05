@@ -25,13 +25,17 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LosslessStitcher.Imaging.IO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Hash2D", "LosslessStitcher.Imaging.Hash2D\LosslessStitcher.Imaging.Hash2D.csproj", "{01EFA9E1-F7E5-47E5-A133-9065BFB9DBD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Tests", "LosslessStitcher.Imaging.Hash2D.Tests\LosslessStitcher.Imaging.Hash2D.Tests.csproj", "{011E43BC-3F78-448D-B927-6B5B633FCD55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Hash2D.Tests", "LosslessStitcher.Imaging.Hash2D.Tests\LosslessStitcher.Imaging.Hash2D.Tests.csproj", "{011E43BC-3F78-448D-B927-6B5B633FCD55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Simple", "LosslessStitcher.Imaging.Hash2D.Simple\LosslessStitcher.Imaging.Hash2D.Simple.csproj", "{B9912376-4B7A-41E8-AF09-8293EE1660A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Hash2D.Simple", "LosslessStitcher.Imaging.Hash2D.Simple\LosslessStitcher.Imaging.Hash2D.Simple.csproj", "{B9912376-4B7A-41E8-AF09-8293EE1660A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Functional", "LosslessStitcher.Functional\LosslessStitcher.Functional.csproj", "{F12F7FE7-4246-41D1-B890-780A897B13C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Functional", "LosslessStitcher.Functional\LosslessStitcher.Functional.csproj", "{F12F7FE7-4246-41D1-B890-780A897B13C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LosslessStitcher.Imaging.Hash2D.Abstract", "LosslessStitcher.Imaging.Hash2D.Abstract\LosslessStitcher.Imaging.Hash2D.Abstract.csproj", "{C520E458-D940-4F57-9525-52E71A77FDD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LosslessStitcher.Imaging.Hash2D.Abstract", "LosslessStitcher.Imaging.Hash2D.Abstract\LosslessStitcher.Imaging.Hash2D.Abstract.csproj", "{C520E458-D940-4F57-9525-52E71A77FDD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsUtility", "CollectionsUtility\CollectionsUtility.csproj", "{4F9DFE92-B2A1-408B-93DB-42BFB918A3B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsUtility.Tests", "CollectionsUtility.Tests\CollectionsUtility.Tests.csproj", "{B5A37855-E38F-43D3-8009-CBC0DC9B8269}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -100,6 +104,14 @@ Global
 		{C520E458-D940-4F57-9525-52E71A77FDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C520E458-D940-4F57-9525-52E71A77FDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C520E458-D940-4F57-9525-52E71A77FDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9DFE92-B2A1-408B-93DB-42BFB918A3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9DFE92-B2A1-408B-93DB-42BFB918A3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9DFE92-B2A1-408B-93DB-42BFB918A3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9DFE92-B2A1-408B-93DB-42BFB918A3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A37855-E38F-43D3-8009-CBC0DC9B8269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A37855-E38F-43D3-8009-CBC0DC9B8269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A37855-E38F-43D3-8009-CBC0DC9B8269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A37855-E38F-43D3-8009-CBC0DC9B8269}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
