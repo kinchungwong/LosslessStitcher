@@ -28,15 +28,19 @@ namespace LosslessStitcher.Imaging.Hash2D.Tests
         {
             int width = 16;
             int height = 16;
+            double filterFrac = 0.1;
             var bitmapFactory = Container.Resolve<IBitmapFactory>();
-            IArrayBitmap<int> input = (Activator.CreateInstance(testBitmapType) as TestBitmapFunc).Generate(bitmapFactory, width, height);
-            IArrayBitmap<int> hashed = _ProcessHash(input);
-            IArrayBitmap<int> filtered = _FilterHash(hashed);
+            var imgInput = (Activator.CreateInstance(testBitmapType) as TestBitmapFunc).Generate(bitmapFactory, width, height);
+            var imgHashed = _ProcessHash(imgInput);
+            var hashPointFilter = CreateUniqueHashFilter(filterFrac);
+            var hashPoints = hashPointFilter.Extract(imgHashed);
+            _PrintHashPointListToConsole(hashPoints);
+            var imgOutput = _HashPointListToBitmap(imgInput.Size, hashPoints);
             string ofn1 = testBitmapType.Name;
             string ofn2 = Path.GetRandomFileName();
             string ofn3 = $"{nameof(SimpleFilter_SmokeTest)}_{nameof(SmokeTest)}_{ofn1}_{ofn2}.png";
             string outputFilename = Path.Combine(Path.GetTempPath(), ofn3);
-            _SaveBitmap(filtered, outputFilename);
+            _SaveBitmap(imgOutput, outputFilename);
         }
 
         private IArrayBitmap<int> _ProcessHash(IArrayBitmap<int> input)
@@ -51,18 +55,33 @@ namespace LosslessStitcher.Imaging.Hash2D.Tests
             return output;
         }
 
-        private IArrayBitmap<int> _FilterHash(IArrayBitmap<int> hashed)
+        private IUniqueHashFilter CreateUniqueHashFilter(double hashValueFilterFrac)
         {
-            Size size = hashed.Size;
-            var filter = Container.Resolve<IUniqueHashFilter>(new NamedParameter("hashValueRangeFilter", new HashValueRangeFilter(0.1)));
-            var filtered = filter.Extract(hashed);
+            Autofac.Core.Parameter[] pars = new Autofac.Core.Parameter[]
+            {
+                new NamedParameter("hashValueRangeFilter", new HashValueRangeFilter(hashValueFilterFrac))
+            };
+            var filter = Container.Resolve<IUniqueHashFilter>(pars);
+            return filter;
+        }
+
+        private IArrayBitmap<int> _HashPointListToBitmap(Size imageSize, IHashPointList hashPointList)
+        {
             var bitmapFactory = Container.Resolve<IBitmapFactory>();
-            IArrayBitmap<int> output = bitmapFactory.Create<int>(size.Width, size.Height);
-            foreach (var hashPoint in filtered)
+            IArrayBitmap<int> output = bitmapFactory.Create<int>(imageSize.Width, imageSize.Height);
+            foreach (var hashPoint in hashPointList)
             {
                 output[hashPoint.Point] = hashPoint.HashValue;
             }
             return output;
+        }
+
+        private void _PrintHashPointListToConsole(IHashPointList hashPointList)
+        {
+            foreach (var hashPoints in hashPointList)
+            {
+                Console.WriteLine($"hash: 0x{hashPoints.HashValue:x8}, point: {hashPoints.Point}");
+            }
         }
 
         private void _SaveBitmap(IArrayBitmap<int> bitmap, string outputFilename)

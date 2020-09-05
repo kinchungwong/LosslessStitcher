@@ -8,6 +8,8 @@ namespace LosslessStitcher.Imaging.Hash2D
     public interface IHashPointList
         : IReadOnlyList<(Point Point, int HashValue)>
     {
+        HashPointSortKey SortKey { get; }
+
         IReadOnlyList<Point> Points { get; }
 
         IReadOnlyList<int> HashValues { get; }

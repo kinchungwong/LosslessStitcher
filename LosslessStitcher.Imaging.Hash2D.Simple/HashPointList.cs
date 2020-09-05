@@ -9,15 +9,17 @@ namespace LosslessStitcher.Imaging.Hash2D.Simple
     public class HashPointList
         : IHashPointList
     {
-        public (Point Point, int HashValue) this[int index] => (Points[index], HashValues[index]);
+        public HashPointSortKey SortKey { get; }
+
+        public int Count { get; private set; }
 
         public IReadOnlyList<Point> Points { get; }
 
         public IReadOnlyList<int> HashValues { get; }
 
-        public int Count { get; private set; }
+        public (Point Point, int HashValue) this[int index] => (Points[index], HashValues[index]);
 
-        public HashPointList(IReadOnlyList<Point> points, IReadOnlyList<int> hashValues)
+        public HashPointList(IReadOnlyList<Point> points, IReadOnlyList<int> hashValues, HashPointSortKey sortKey)
         {
             if (points is null)
             {
@@ -34,6 +36,7 @@ namespace LosslessStitcher.Imaging.Hash2D.Simple
             }
             Points = points;
             HashValues = hashValues;
+            SortKey = sortKey;
         }
 
         public IEnumerator<(Point Point, int HashValue)> GetEnumerator()

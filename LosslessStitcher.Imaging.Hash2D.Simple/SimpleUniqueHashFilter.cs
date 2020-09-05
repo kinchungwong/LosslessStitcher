@@ -149,11 +149,14 @@ namespace LosslessStitcher.Imaging.Hash2D.Simple
                 // Hash points that are added to the list may be found to be a duplicate subsequently.
                 // Therefore a final filtering is necessary.
                 // ======
+                // Multi-image hash point detections prefer the list sorted by hash value for easier
+                // collation during merging.
+                // ======
                 // Also trim the final lists to exact size, since a HashPointList will be kept around 
                 // for the entire duration of the tracking algorithm.
                 // ======
                 int unfilteredCount = _hashValues.Count;
-                var goodIndex = new List<int>(capacity: unfilteredCount);
+                var goodList = new List<(int HashValue, Point Point)>();
                 for (int index = 0; index < unfilteredCount; ++index)
                 {
                     int hashValue = _hashValues[index];
@@ -161,17 +164,30 @@ namespace LosslessStitcher.Imaging.Hash2D.Simple
                     {
                         continue;
                     }
-                    goodIndex.Add(index);
+                    goodList.Add((hashValue, _points[index]));
                 }
-                int goodCount = goodIndex.Count;
+                int CompareHashPointFunc(
+                    (int HashValue, Point Point) first,
+                    (int HashValue, Point Point) second)
+                {
+                    if (first.HashValue < second.HashValue) return -1;
+                    if (first.HashValue > second.HashValue) return 1;
+                    if (first.Point.Y < second.Point.Y) return -1;
+                    if (first.Point.Y > second.Point.Y) return 1;
+                    if (first.Point.X < second.Point.X) return -1;
+                    if (first.Point.X > second.Point.X) return 1;
+                    return 0;
+                }
+                goodList.Sort(CompareHashPointFunc);
+                int goodCount = goodList.Count;
                 var goodPoints = new List<Point>(capacity: goodCount);
                 var goodHashValues = new List<int>(capacity: goodCount);
-                foreach (int index in goodIndex)
+                foreach (var goodHP in goodList)
                 {
-                    goodPoints.Add(_points[index]);
-                    goodHashValues.Add(_hashValues[index]);
+                    goodPoints.Add(goodHP.Point);
+                    goodHashValues.Add(goodHP.HashValue);
                 }
-                return new HashPointList(goodPoints.AsReadOnly(), goodHashValues.AsReadOnly());
+                return new HashPointList(goodPoints.AsReadOnly(), goodHashValues.AsReadOnly(), HashPointSortKey.HashValue);
             }
         }
 
