@@ -89,6 +89,12 @@ namespace CollectionsUtility
             set;
         }
 
+        public override T this[int index]
+        {
+            get => ItemAt(index);
+            set => ReplaceAt(index, value);
+        }
+
         public UniqueListEx()
             : base()
         {

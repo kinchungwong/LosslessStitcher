@@ -1,12 +1,19 @@
 ﻿### ```CollectionsUtility``` (Part of ```LosslessStitcher```)
 
+---
+
 #### UniqueList
 
-- It is an append-only list of items where each item can only occur once.
-- This list retains the order in which items are added.
-- When each item is added for the first time, it is assigned an index, much like the item index on a ```List```.
-- If a duplicate item is added, nothing is changed.
-- Internally, a ```Dictionary``` (and ```EqualityComparer.Default```) is used for equality comparison.
+```UniqueList{T}``` is a list of unique items.
 
-- ```UniqueList{T}``` implements ```IList{T}``` but with the following differences:
-  - 
+```UniqueListEx{T}``` is a list of unique items that supports item removal and replacement.
+
+Main article: [Readme_UniqueList.md](Readme_UniqueList.md)
+
+---
+
+#### Histogram
+
+(To be written.)
+
+---

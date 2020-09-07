@@ -30,15 +30,10 @@ namespace CollectionsUtility
         protected Dictionary<T, int> _lookup;
         #endregion
 
-        T IList<T>.this[int index]
+        public abstract T this[int index]
         {
-            get => ItemAt(index);
-            set => throw new NotSupportedException();
-        }
-
-        T IReadOnlyList<T>.this[int index]
-        {
-            get => ItemAt(index);
+            get;
+            set;
         }
 
         public int Count
@@ -102,6 +97,9 @@ namespace CollectionsUtility
             _items = new List<T>(other._items);
             _flags = new List<bool>(other._flags);
             _lookup = new Dictionary<T, int>(other._lookup);
+            Items = _items.AsReadOnly();
+            Lookup = new ReadOnlyDictionary<T, int>(_lookup);
+            Count = other.Count;
         }
 
         private void _Allocate(int? capacity)
