@@ -97,6 +97,9 @@ namespace CollectionsUtility
             _items = new List<T>(other._items);
             _flags = new List<bool>(other._flags);
             _lookup = new Dictionary<T, int>(other._lookup);
+            Items = _items.AsReadOnly();
+            Lookup = new ReadOnlyDictionary<T, int>(_lookup);
+            Count = other.Count;
         }
 
         private void _Allocate(int? capacity)
