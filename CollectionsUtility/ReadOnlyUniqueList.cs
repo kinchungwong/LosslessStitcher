@@ -5,15 +5,13 @@ using System.Collections.Generic;
 namespace CollectionsUtility
 {
     public class ReadOnlyUniqueList<T>
-        : IUniqueList<T>
+        : IReadOnlyUniqueList<T>
     {
-        private IUniqueList<T> _target;
+        #region private
+        private UniqueListBase<T> _target;
+        #endregion
 
-        public int Count => _target.Count;
-
-        public T this[int index] => ItemAt(index);
-
-        public ReadOnlyUniqueList(IUniqueList<T> target)
+        public ReadOnlyUniqueList(UniqueListBase<T> target)
         {
             if (target is null)
             {
@@ -22,15 +20,22 @@ namespace CollectionsUtility
             _target = target;
         }
 
-        public int IndexOf(T t) => _target.IndexOf(t);
+        public int Count => _target.Count;
+
+        T IReadOnlyList<T>.this[int index] => ((IReadOnlyUniqueList<T>)_target)[index];
+
+        public int IndexOf(T item) => _target.IndexOf(item);
 
         public T ItemAt(int index) => _target.ItemAt(index);
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => ((IEnumerable<T>)_target).GetEnumerator();
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _target.GetEnumerator();
+        }
 
-        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_target).GetEnumerator();
-
-        IEnumerator<(int Index, T Item)> IEnumerable<(int Index, T Item)>.GetEnumerator() =>
-            ((IEnumerable<(int Index, T Item)>)_target).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)_target).GetEnumerator();
+        }
     }
 }

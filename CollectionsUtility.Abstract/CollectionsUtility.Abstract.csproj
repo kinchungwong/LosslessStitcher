@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CollectionsUtility</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CollectionsUtility.Abstract\CollectionsUtility.Abstract.csproj" />
-  </ItemGroup>
 
 </Project>
