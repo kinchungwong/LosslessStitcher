@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="T3\" />
+    <ProjectReference Include="..\CollectionsUtility\CollectionsUtility.csproj" />
+    <ProjectReference Include="..\LosslessStitcher.Imaging.Hash2D.Abstract\LosslessStitcher.Imaging.Hash2D.Abstract.csproj" />
   </ItemGroup>
 
 </Project>
