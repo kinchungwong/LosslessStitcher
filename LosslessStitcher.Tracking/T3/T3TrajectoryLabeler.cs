@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CollectionsUtility;
 using CollectionsUtility.Mocks;
 
 namespace LosslessStitcher.Tracking.T3
 {
+    using CollectionsUtility.Specialized;
     using LosslessStitcher.Data;
     using LosslessStitcher.Imaging.Hash2D;
 
@@ -11,49 +13,86 @@ namespace LosslessStitcher.Tracking.T3
     {
         public T3ImageKeys ImageKeys { get; }
 
-        public Func<int, IHashPointList> ImageHashPointSource { get; }
+        public int ImageKey0 => ImageKeys.ItemAt(0);
+
+        public int ImageKey1 => ImageKeys.ItemAt(1);
+
+        public int ImageKey2 => ImageKeys.ItemAt(2);
 
         public IReadOnlyList<int> HashValues { get; }
 
         public IReadOnlyList<(Point Point0, Point Point1, Point Point2)> Points { get; }
 
-        public T3TrajectoryLabeler(IEnumerable<int> imageKeys, Func<int, IHashPointList> imageHashPointSource)
+        public IReadOnlyUniqueList<(Movement, Movement)> Movements { get; }
+
+        public IReadOnlyList<int> Labels { get; }
+
+        public IReadOnlyDictionary<int, int> LabelPointCounts { get; }
+
+        public T3TrajectoryLabeler(T3ImageKeys imageKeys, Func<int, IHashPointList> imageHashPointSource)
         {
-            ImageKeys = new T3ImageKeys(imageKeys);
-            ImageHashPointSource = imageHashPointSource;
-            var hp0 = ImageHashPointSource(ImageKeys.ItemAt(0));
-            var hp1 = ImageHashPointSource(ImageKeys.ItemAt(1));
-            var hp2 = ImageHashPointSource(ImageKeys.ItemAt(2));
-            if (hp0.SortKey != HashPointSortKey.HashValue ||
-                hp1.SortKey != HashPointSortKey.HashValue ||
-                hp2.SortKey != HashPointSortKey.HashValue)
+            if (imageKeys is null)
             {
-                throw new InvalidOperationException();
+                throw new ArgumentNullException(nameof(imageKeys));
             }
-            var hp012 = new SortedIntListIntersect(hp0.HashValues, hp1.HashValues, hp2.HashValues);
-            HashValues = new List<int>(hp012).AsReadOnly();
-            var pts012 = new List<(Point Point0, Point Point1, Point Point2)>();
+            if (imageHashPointSource is null)
+            {
+                throw new ArgumentNullException(nameof(imageHashPointSource));
+            }
+            ImageKeys = imageKeys;
+            var hps0 = imageHashPointSource(ImageKey0);
+            var hps1 = imageHashPointSource(ImageKey1);
+            var hps2 = imageHashPointSource(ImageKey2);
+            if (hps0.SortKey != HashPointSortKey.HashValue ||
+                hps1.SortKey != HashPointSortKey.HashValue ||
+                hps2.SortKey != HashPointSortKey.HashValue)
+            {
+                throw new InvalidOperationException(
+                    message: "This class requires hash points to be sorted by hash value.");
+            }
+            var hvs0 = hps0.HashValues;
+            var hvs1 = hps1.HashValues;
+            var hvs2 = hps2.HashValues;
+            var pts0 = hps0.Points;
+            var pts1 = hps1.Points;
+            var pts2 = hps2.Points;
+            var hvs012i = new SortedIntListIntersect(hvs0, hvs1, hvs2);
+            var pts012i = new List<(Point Point0, Point Point1, Point Point2)>();
             int index0 = 0;
             int index1 = 0;
             int index2 = 0;
-            foreach (int hashValue in HashValues)
+            var movements = new UniqueList<(Movement, Movement)>();
+            var labels = new List<int>();
+            var labelHist = HistogramFactory<int, int>.Create();
+            foreach (int hashValue in hvs012i)
             {
-                while (index0 < hp0.Count &&
-                    hp0.HashValues[index0] < hashValue)
-                {
-                    ++index0;
-                }
-                while (index1 < hp1.Count &&
-                    hp1.HashValues[index1] < hashValue)
-                {
-                    ++index1;
-                }
-                while (index2 < hp2.Count &&
-                    hp2.HashValues[index2] < hashValue)
-                {
-                    ++index2;
-                }
-                pts012.Add((hp0.Points[index0], hp1.Points[index1], hp2.Points[index2]));
+                _StcSortedFindNext(hvs0, hashValue, ref index0);
+                _StcSortedFindNext(hvs1, hashValue, ref index1);
+                _StcSortedFindNext(hvs2, hashValue, ref index2);
+                var pt0 = pts0[index0];
+                var pt1 = pts1[index1];
+                var pt2 = pts2[index2];
+                pts012i.Add((pt0, pt1, pt2));
+                var m01 = pt1 - pt0;
+                var m12 = pt2 - pt1;
+                int label = movements.Add((m01, m12));
+                labels.Add(label);
+                labelHist.Add(label);
+            }
+            HashValues = new List<int>(hvs012i).AsReadOnly();
+            Points = pts012i.AsReadOnly();
+            Movements = movements.AsReadOnly();
+            Labels = labels.AsReadOnly();
+            LabelPointCounts = labelHist.ToDictionary().AsReadOnly();
+        }
+
+        private static void _StcSortedFindNext(IReadOnlyList<int> list, int valueToFind, ref int index)
+        {
+            int count = list.Count;
+            while (index < count &&
+                list[index] < valueToFind)
+            {
+                ++index;
             }
         }
     }

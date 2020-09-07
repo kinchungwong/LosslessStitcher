@@ -4,8 +4,6 @@ using CollectionsUtility;
 
 namespace LosslessStitcher.Tracking.T3
 {
-    using System.Collections;
-
     public sealed class T3ImageKeys
         : ReadOnlyUniqueList<int>
     {

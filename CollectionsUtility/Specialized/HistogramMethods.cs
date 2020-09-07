@@ -47,6 +47,19 @@ namespace CollectionsUtility.Specialized
             }
         }
 
+        public static Dictionary<TKey, TBin> ToDictionary<TKey, TBin>(
+            this IHistogram<TKey, TBin> hist)
+            where TBin : struct
+        {
+            var dict = new Dictionary<TKey, TBin>();
+            foreach (var kvp in hist)
+            {
+                dict.Add(kvp.Key, kvp.Value);
+            }
+            return dict;
+        }
+
+
         public static KeyValuePair<TKey, TBin>[] ToArray<TKey, TBin>(
             this IHistogram<TKey, TBin> hist)
             where TBin : struct
