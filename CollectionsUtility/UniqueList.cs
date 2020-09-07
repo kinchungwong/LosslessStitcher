@@ -68,6 +68,12 @@ namespace CollectionsUtility
             set => throw new NotSupportedException();
         }
 
+        sealed public override T this[int index]
+        {
+            get => ItemAt(index);
+            set => throw new NotSupportedException();
+        }
+
         public UniqueList()
             : base()
         {

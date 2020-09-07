@@ -30,15 +30,10 @@ namespace CollectionsUtility
         protected Dictionary<T, int> _lookup;
         #endregion
 
-        T IList<T>.this[int index]
+        public abstract T this[int index]
         {
-            get => ItemAt(index);
-            set => throw new NotSupportedException();
-        }
-
-        T IReadOnlyList<T>.this[int index]
-        {
-            get => ItemAt(index);
+            get;
+            set;
         }
 
         public int Count
