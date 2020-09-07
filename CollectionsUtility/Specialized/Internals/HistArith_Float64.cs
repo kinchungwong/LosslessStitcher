@@ -3,9 +3,7 @@
     public struct HistArith_Float64
         : IHistArith<double>
     {
-        public double Zero => 0.0;
-
-        public double One => 1.0;
+        public double UnitValue => 1.0;
 
         public double Add(double arg0, double arg1)
         {

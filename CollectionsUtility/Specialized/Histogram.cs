@@ -1,41 +1,46 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace CollectionsUtility.Specialized
 {
     using CollectionsUtility.Specialized.Internals;
-    using System.Collections.ObjectModel;
 
-    public class Histogram<TKey, TBin>
-        : IHistogram<TKey, TBin>
-        where TBin : struct
+    public class Histogram<TKey, TValue>
+        : IHistogram<TKey, TValue>
+        where TValue : struct
     {
         #region private 
         private UniqueList<TKey> _mapping;
-        private List<TBin> _bins;
+        private List<TValue> _values;
         #endregion
 
-        public IHistArith<TBin> HistArith { get; }
+        public IHistArith<TValue> HistArith { get; }
 
         public IEnumerable<TKey> Keys { get; }
 
-        public IEnumerable<TBin> Values { get; }
+        public IEnumerable<TValue> Values { get; }
 
         public int Count => _mapping.Count;
 
-        public TBin DefaultIncrement { get; set; }
+        public TValue DefaultIncrement { get; set; }
 
-        public TBin this[TKey key] => _bins[_mapping.IndexOf(key)];
+        public TValue this[TKey key] => _values[_mapping.IndexOf(key)];
 
-        public Histogram(IHistArith<TBin> histArith)
+        public Histogram(IHistArith<TValue> histArith)
         {
             HistArith = histArith;
             _mapping = new UniqueList<TKey>();
-            _bins = new List<TBin>();
-            DefaultIncrement = HistArith.One;
+            _values = new List<TValue>();
+            DefaultIncrement = HistArith.UnitValue;
             Keys = _mapping;
-            Values = _bins;
+            Values = _values;
+        }
+
+        public void Clear()
+        {
+            _mapping.Clear();
+            _values.Clear();
+            DefaultIncrement = HistArith.UnitValue;
         }
 
         public void Add(TKey key)
@@ -43,26 +48,26 @@ namespace CollectionsUtility.Specialized
             Add(key, DefaultIncrement);
         }
 
-        public void Add(KeyValuePair<TKey, TBin> keyAndAmount)
+        public void Add(KeyValuePair<TKey, TValue> keyAndAmount)
         {
             Add(keyAndAmount.Key, keyAndAmount.Value);
         }
 
-        public void Add(TKey key, TBin amount)
+        public void Add(TKey key, TValue amount)
         {
             int index = _mapping.Add(key);
-            while (index >= _bins.Count)
+            while (index >= _values.Count)
             {
-                _bins.Add(HistArith.Zero);
+                _values.Add(default);
             }
-            _bins[index] = HistArith.Add(_bins[index], amount);
+            _values[index] = HistArith.Add(_values[index], amount);
         }
 
-        public IEnumerator<KeyValuePair<TKey, TBin>> GetEnumerator()
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             foreach (var indexAndKey in (IEnumerable<(int Index, TKey Item)>)_mapping)
             {
-                yield return new KeyValuePair<TKey, TBin>(indexAndKey.Item, _bins[indexAndKey.Index]);
+                yield return new KeyValuePair<TKey, TValue>(indexAndKey.Item, _values[indexAndKey.Index]);
             }
         }
 
@@ -76,12 +81,12 @@ namespace CollectionsUtility.Specialized
             return _mapping.IndexOf(key) >= 0;
         }
 
-        public bool TryGetValue(TKey key, out TBin value)
+        public bool TryGetValue(TKey key, out TValue value)
         {
             int index = _mapping.IndexOf(key);
             if (index >= 0)
             {
-                value = _bins[index];
+                value = _values[index];
                 return true;
             }
             value = default;

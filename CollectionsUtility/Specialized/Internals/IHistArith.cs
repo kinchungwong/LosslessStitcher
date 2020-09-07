@@ -8,9 +8,7 @@ namespace CollectionsUtility.Specialized.Internals
         : IComparer<T>
         where T : struct
     {
-        T Zero { get; }
-
-        T One { get; }
+        T UnitValue { get; }
 
         T Add(T arg0, T arg1);
     }

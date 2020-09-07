@@ -12,25 +12,25 @@ namespace CollectionsUtility.Specialized
     /// The key type.
     /// </typeparam>
     /// 
-    /// <typeparam name="TBin">
+    /// <typeparam name="TValue">
     /// The quantity associated with each key. This quantity can be integer-valued or real-valued.
     /// </typeparam>
     /// 
-    public interface IHistogram<TKey, TBin>
-        : IReadOnlyDictionary<TKey, TBin>
-        where TBin : struct
+    public interface IHistogram<TKey, TValue>
+        : IReadOnlyDictionary<TKey, TValue>
+        where TValue : struct
     {
         /// <summary>
         /// Basic arithmetics operating on the histogram bin value type.
         /// </summary>
-        IHistArith<TBin> HistArith { get; }
+        IHistArith<TValue> HistArith { get; }
 
-        TBin DefaultIncrement { get; set; }
+        TValue DefaultIncrement { get; set; }
 
         void Add(TKey key);
 
-        void Add(TKey key, TBin amount);
+        void Add(TKey key, TValue amount);
 
-        void Add(KeyValuePair<TKey, TBin> keyAndAmount);
+        void Add(KeyValuePair<TKey, TValue> keyAndAmount);
     }
 }
