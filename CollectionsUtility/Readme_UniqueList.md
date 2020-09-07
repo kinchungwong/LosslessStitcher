@@ -62,7 +62,7 @@
 ### Basic requirement on item type 
 
 Users should ensure that the item type ```T``` implements ```IEquatable{T}``` and provides 
-a meaningful implementation of both ```Equals(T)``` and ```GetHashCode()``` in order to 
+a meaningful implementation for both ```Equals(T)``` and ```GetHashCode()``` in order to 
 correctly detect duplicated items.
 
 ---
