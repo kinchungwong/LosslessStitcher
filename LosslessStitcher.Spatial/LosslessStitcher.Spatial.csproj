@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LosslessStitcher.Base\LosslessStitcher.Base.csproj" />
+    <ProjectReference Include="..\LosslessStitcher.Spatial.Abstract\LosslessStitcher.Spatial.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>
